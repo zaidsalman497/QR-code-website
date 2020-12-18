@@ -8,19 +8,3 @@ var firebaseConfig = {
     measurementId: "G-695BTJ8MGG"
 }
 firebase.initializeApp(firebaseConfig);
-
-
-function createUser(email, password) {
-    firebase.auth().createUserWithEmailAndPassword(email, password)
-    .then((user) => {
-      // Signed in 
-      // ...
-      alert('sign in succufull');
-    })
-    .catch((error) => {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      // ..
-      alert('sign in fail: ' + error.message);
-    });
-}
