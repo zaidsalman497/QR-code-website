@@ -21,7 +21,7 @@ function createUser(email, password) {
       var errorCode = error.code;
       var errorMessage = error.message;
       // ..
-      setMessage('Failure signin :( ');
+      setMessage(errorMessage);
     });
 }
 
