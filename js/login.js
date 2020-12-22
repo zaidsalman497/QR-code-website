@@ -1,9 +1,8 @@
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
-    // User is signed in.
-  } else {
-    // No user is signed in.
+
   }
+  if (user) {}
 });
 
 function onLoginButtonClicked() {
@@ -12,7 +11,8 @@ function onLoginButtonClicked() {
   var userPass = getElement("inputPassword").value
 
   firebase.auth().signInWithEmailAndPassword(userEmail, userPass)
-    .then((user) => {
+    .then((response) => {
+      document.cookie = getCookieValue("loggedInUser", response.user.email, 2);  
       window.location.href = "loggedin.html"
       getElement('btnLogin').disabled = false;
     })
@@ -23,5 +23,3 @@ function onLoginButtonClicked() {
       getElement('btnLogin').disabled = false;
     });
 }
-
-

@@ -11,12 +11,21 @@ function onSignUpButtonClicked() {
 
 function createUser(email, password) {
     firebase.auth().createUserWithEmailAndPassword(email, password)
-        .then((user) => {
+        .then((response) => {
             getElement('btnSignUp').disabled = false;
             document.getElementById('status').value = 'Sucessful signin :)';
+            var user = firebase.auth().currentUser;
             // Signed in 
-            // ...
-            setMessage('Sucessful signin :)');
+            user.updateProfile({
+                displayName: getElement('inputusername').value//,  // photoURL: "https://example.com/jane-q-user/profile.jpg"
+              }).then(function() {
+                setMessage('Updated user name...');
+              }).catch(function(error) {
+                // An error happened.
+              });
+              setMessage('Sucessful signin :)');
+              document.cookie = getCookieValue("loggedInUser", getElement('inputusername').value, 2);  
+              window.location.href = "loggedin.html"
         })
         .catch((error) => {
             getElement('btnSignUp').disabled = false;
