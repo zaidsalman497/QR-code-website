@@ -1,0 +1,15 @@
+{
+  "name": "zoya-github",
+  "version": "1.0.0",
+  "description": "",
+  "main": "login.html",
+  "scripts": {
+    "test": "start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "zoya-login"
+  },
+  "author": "zoya salman",
+  "license": "ISC"
+}
